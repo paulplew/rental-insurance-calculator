@@ -5,5 +5,5 @@ The purpose of this final project is to calculate the value of rental car insura
 More information can be found in the`final-writeup.pdf` file.
 
 ## Usage
-This software was tested on `python 3.9.2` and should work on all versions of `python3`.
+This software was tested on `python 3.9.2` and should work on all versions `3.x.x`.
 
