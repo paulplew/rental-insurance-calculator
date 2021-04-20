@@ -1,0 +1,71 @@
+\documentclass[12 pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyvrb}
+\usepackage{fullpage}
+\usepackage{enumerate}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{apacite}
+
+\setlength\parindent{24pt}
+\renewcommand{\section}[1]{\bigskip \bigskip \par \noindent {\large \bf #1} \\[2ex]}
+\renewcommand{\subsection}[1]{\medskip \par {\bf #1} \\[2ex]}
+
+\title{Final Project: Rental Insurance Cost Analysis}
+\author{Nathaniel Peters and Paul Plew}
+\date{April 20, 2021}
+
+\begin{document}
+\maketitle 
+
+\section{Introduction}
+\indent The objective of our project was the calculate the value of insurance by finding the average cost per day for a rental car service’s insurance program for the rental car company. We used data from the Internet to determine the probability of a crash depending on the user's age, gender and the car type. The results were surprising!
+
+\section{Topics Explored}
+\indent The first discrete concept we used was probability. To determine the probability that a driver would get in an accident, we found data from a Law Firm about the number of car crashes a year \cite{accidents}, and divided that by 365 to determine the number of car crashes on any given day. We then collected data on how many cars are driven on average each day.\\ 
+Using this data, we determined the base probability that any driver will be a party in a car accident. Taking data from a report on the cause and demographics of crashes like age \cite{licensed}, gender, and type of car \cite{survey} compared to the number of licensed drivers of that demographic or number of drivers with that car, we calculated the probability that that driver with that information would get in an accident.\\
+We then used linearizion to determine the average cost based on data for the average insurance claim from an accident\cite{crash}.\\
+
+\subsection{Bayes Theorem}
+\indent Here is our application of Bayes Theorem, given that $A=Accident$, $C=Car \hspace{1mm} Type$, $D=Demographics$, and $C\hspace{1mm}\&\hspace{1mm}D$ are Independent.
+
+\begin{align*}
+  P(A|C \cap D)=\frac{P(A\cap C \cap D)}{P(C \cap D)}=\frac{P(C \cap D|A) \cdot P(A)}{P(C \cap D)}=\frac{P(C |A) \cdot P(D|A)\cdot P(A)}{P(C) \cdot P(D)}
+\end{align*}
+\section{Learning}
+\indent This project challenged our ability to use probability to manipulate data and use Bayes Theorem. It applied our in class and homework concepts to a real world application of understanding risk.
+
+\section{Limitations}
+\indent We made assumptions that certain types of data between driver demographics and type of car were independent.
+We had to estimate the age of drivers across close but different age ranges for the percentage of crashes and number of licensed drivers. As a result, we eliminated the ‘below 19’ and ‘19-25’ age groups because we could not accurately map them together to determine the probability.
+
+\section{Example Output}
+Here is an example of the output from our program:
+\begin{Verbatim}
+  The purpose of this tool is to help you decide if you want to 
+  purchase insurance when renting a car.
+  
+  What is your age group?
+  1) 26-35, 2) 36-45, 3) 46-55, 4) 56-65, 5) Over 65
+  Enter the number of your age group : 1
+  
+  Male or Female?
+  Enter 0 for male, and 1 for female : 0
+  
+  The available car types are :
+  1) Passenger, 2) SUV, 3) Light Truck, 4) Other
+  Enter the number of your car type : 0
+  
+  Your probability of getting in an accident on a given day is:
+  0.0175%
+  You should buy insurance if it costs less than:
+  $0.55 per day
+\end{Verbatim}
+ 
+\section{Note of Warning}
+\indent This is not meant to be professional advice, use at your own risk.
+
+\newpage
+\bibliographystyle{apacite}
+\bibliography{citations}
+\end{document}
